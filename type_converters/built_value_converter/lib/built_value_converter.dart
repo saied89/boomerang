@@ -3,6 +3,6 @@
 /// More dartdocs go here.
 library built_value_converter;
 
-export 'src/built_value_converter_base.dart';
+export 'src/built_value_converter.dart';
 
 // TODO: Export any libraries intended for clients of this package.
