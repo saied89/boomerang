@@ -3,7 +3,7 @@
 /// More dartdocs go here.
 library boomerang;
 
-export 'src/boomerang_base.dart';
-export 'src/converter.dart';
+export 'src/boomerang.dart';
+export 'src/type_converter.dart';
 
 // TODO: Export any libraries intended for clients of this package.
