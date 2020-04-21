@@ -10,6 +10,8 @@ abstract class Method {
 }
 
 class Get extends Method {
+  const Get([String url]) : super(url);
+
   @override
   String get methodString => 'GET';
 }
