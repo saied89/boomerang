@@ -1,5 +1,4 @@
 import 'package:boomerang/boomerang.dart';
-import 'package:boomerang/src/request.dart';
 
 import 'method.dart';
 import 'body.dart';
@@ -13,8 +12,9 @@ class Call<T> {
 
   http.Request getRequest(String baseUrl, TypeConverter converter) {
     final req = http.Request(method.methodString, _getUrl(method, url, baseUrl));
-    if(body != null)
-    req.body = body.getSerialized(converter);
+    if(body != null) {
+      req.body = body.getSerialized(converter);
+    }
     return req;
   }
 
