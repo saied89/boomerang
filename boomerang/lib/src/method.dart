@@ -20,3 +20,20 @@ class Post extends Method {
   @override
   String get methodString => 'POST';
 }
+
+class Put extends Method {
+  @override
+  String get methodString => 'PUT';
+}
+
+class Delete extends Method {
+  @override
+  String get methodString => 'DELETE';
+}
+
+class Head extends Method {
+  @override
+  String get methodString => 'HEAD';
+}
+
+
