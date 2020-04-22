@@ -1,5 +1,4 @@
 import 'package:boomerang/src/method.dart';
-import 'package:boomerang/src/request.dart';
 import 'package:test/test.dart';
 
 main() {
