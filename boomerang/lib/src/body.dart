@@ -6,5 +6,15 @@ abstract class Body<T> {
 
   Body(this.body);
 
-  String getSerialized(TypeConverter typeConverter);
+  TypeConverter get _converter;
+
+  String get serialized => _converter.toJson(body);
+}
+
+class DefaultBody extends Body {
+  DefaultBody(body) : super(body);
+
+  @override
+  TypeConverter get _converter => null;
+
 }

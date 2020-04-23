@@ -1,6 +1,6 @@
 ///Basic definition of all type converters
-abstract class TypeConverter {
-  T fromJson<T>(String jsonStr);
+abstract class TypeConverter<S> {
+  T fromJson<T extends S>(String jsonStr);
 
-  String toJson<T>(T body);
+  String toJson<T extends S>(T body);
 }

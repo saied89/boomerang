@@ -7,5 +7,7 @@ export 'src/boomerang.dart';
 export 'src/type_converter.dart';
 export 'src/call.dart';
 export 'src/response.dart';
+export 'src/default_type_converter.dart';
+export 'src/method.dart';
 
 // TODO: Export any libraries intended for clients of this package.

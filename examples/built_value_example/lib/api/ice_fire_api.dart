@@ -1,5 +1,4 @@
 import 'package:boomerang/boomerang.dart';
-import 'package:boomerang/src/method.dart';
 import 'package:built_value_converter/built_value_converter.dart';
 import 'package:built_value_example/model/Character.dart';
 import 'package:built_value_example/serializer/serializers.dart';

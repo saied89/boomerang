@@ -13,7 +13,7 @@ class Call<T> {
   http.Request getRequest(String baseUrl, TypeConverter converter) {
     final req = http.Request(method.methodString, _getUrl(method, url, baseUrl));
     if(body != null) {
-      req.body = body.getSerialized(converter);
+      req.body = body.serialized;
     }
     return req;
   }
