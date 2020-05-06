@@ -3,7 +3,7 @@
 /// More dartdocs go here.
 library serializable_converter;
 
-export 'src/serializable_converter_base.dart';
+export 'src/serializable_converter.dart';
 export 'src/serializable.dart';
 export 'src/serializer.dart';
 

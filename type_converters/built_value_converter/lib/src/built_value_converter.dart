@@ -5,7 +5,6 @@ import 'dart:convert';
 import 'package:boomerang/boomerang.dart';
 import 'package:built_value/serializer.dart';
 
-/// Checks if you are awesome. Spoiler: you are.
 class BuiltValueConverter implements TypeConverter {
   final Serializers serializers;
 
@@ -24,10 +23,6 @@ class BuiltValueConverter implements TypeConverter {
     assert(serializerForType != null);
 
     return serializers.deserializeWith(
-        serializerForType, _convertStringToDynamic(jsonStr));
-  }
-
-  dynamic _convertStringToDynamic(String jsonStr) {
-    return jsonDecode(jsonStr);
+        serializerForType, jsonDecode(jsonStr));
   }
 }
