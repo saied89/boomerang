@@ -15,4 +15,4 @@ Call<Character> getSnow =
 
 extension Equeue<T> on Call<T> {
   Future<Response<T>> enqueue() => boomerang.dispatch(this);
-}
+} // sample usage: var response = await getSnow.enqueue();
