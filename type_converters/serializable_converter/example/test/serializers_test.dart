@@ -3,7 +3,7 @@ import 'package:serializable_converter/src/serializers.dart';
 import 'package:test/test.dart';
 
 main() {
-  test('description', () {
+  test('serializer is fetched from serializers correctly', () {
     final serializers = Serializers([Character.serializer]);
 
     expect(serializers.getSerializer<Character>(), isNotNull);

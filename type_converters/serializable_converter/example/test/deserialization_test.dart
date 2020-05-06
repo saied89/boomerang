@@ -1,7 +1,8 @@
 import 'dart:convert';
+import 'package:example/models/character.dart';
+import 'package:serializable_converter/serializable_converter.dart';
 import 'package:test/test.dart';
 
-import '../lib/models/character.dart';
 
 main() {
   test('Models is deserialized correctly', () {
@@ -15,5 +16,19 @@ main() {
     prints(character.aliases);
     expect(character.aliases[0], equals('Lord Snow'));
     expect(character.aliases[2], equals('The Snow of Winterfell'));
+  });
+
+  test("json is deserialized and serialized correctly", () {
+    final serializers = Serializers([Character.serializer]);
+    final subject = SerializableConverter(serializers);
+
+    final jsonStr = """{"name":"Jon Snow","gender":"Male","aliases":["Lord Snow","Ned Stark's Bastard","The Snow of Winterfell","The Crow-Come-Over","The 998th Lord Commander of the Night's Watch","The Bastard of Winterfell","The Black Bastard of the Wall","Lord Crow"]}""";
+
+    final modeled = subject.fromJson<Character>(jsonStr);
+
+    final serializedJson = subject.toJson(modeled);
+
+    expect(jsonStr, equals(serializedJson));
+
   });
 }
