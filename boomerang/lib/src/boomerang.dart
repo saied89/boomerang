@@ -1,7 +1,11 @@
+import 'package:boomerang/boomerang.dart';
 import 'package:boomerang/src/call.dart';
 import 'package:boomerang/src/response.dart';
 import 'package:boomerang/src/type_converter.dart';
 import 'package:http/http.dart' as http;
+import 'package:meta/meta.dart';
+
+const defaultConverter = DefaultTypeConverter();
 
 class Boomerang {
   final http.Client client;
@@ -15,6 +19,5 @@ class Boomerang {
     return Response(res, body);
   }
 
-  //TODO assert [baseUrl] last char is '/'
-  Boomerang(this.converter, this.client, this.baseUrl);
+  Boomerang({this.converter = defaultConverter, @required this.client, @required this.baseUrl}): assert(baseUrl.endsWith('/'), 'Base Url should end with /:'+ baseUrl);
 }

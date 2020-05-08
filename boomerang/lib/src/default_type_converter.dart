@@ -3,6 +3,9 @@ import 'dart:convert';
 import 'package:boomerang/src/type_converter.dart';
 
 class DefaultTypeConverter extends TypeConverter<Map<String, dynamic>> {
+
+  const DefaultTypeConverter();
+
   @override
   T fromJson<T extends Map<String, dynamic>>(String jsonStr) {
     return jsonDecode(jsonStr);
