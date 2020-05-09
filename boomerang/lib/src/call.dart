@@ -2,13 +2,12 @@ import 'package:boomerang/boomerang.dart';
 import 'package:uri/uri.dart';
 
 import 'method.dart';
-import 'body.dart';
 import 'package:http/http.dart' as http;
 
 class Call<T> {
   final Method method;
   final String url;
-  final Body body;
+  final Object body;
   final Map<String, String> pathParams;
   final Map<String, String> queryParams;
   final Map<String, String> headers;
@@ -20,7 +19,7 @@ class Call<T> {
     final req = http.Request(method.methodString,
         _getUrl(method, url, baseUrl, pathParams, queryParams));
     if (body != null) {
-      req.body = body.serialized;
+      req.body = converter.toJson(body);
     }
     return req;
   }

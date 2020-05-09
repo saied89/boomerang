@@ -1,4 +1,5 @@
 import 'package:example/models/character.dart';
+import 'package:serializable_converter/serializable_converter.dart';
 import 'package:serializable_converter/src/serializers.dart';
 import 'package:test/test.dart';
 

@@ -24,4 +24,10 @@ class SerializableConverter implements TypeConverter {
     return jsonEncode(serializerForType.toJson(body));
   }
 
+  String objectToJson(Object object) {
+    final serializerForType = serializers.getSerializerWithType(object.runtimeType);
+    assert(serializerForType != null);
+    return jsonEncode(serializerForType.toJson(object));
+  }
+
 }

@@ -11,4 +11,6 @@ class Serializers {
   }
 
   Serializer<T> getSerializer<T>() => _map[T];
+
+  Serializer getSerializerWithType(Type t) => _map[t];
 }
