@@ -6,6 +6,7 @@ import 'package:http/http.dart' as http;
 
 /// A boomerang call. Holds parameters and constructs a [http.Request] accordingly.
 /// [headers] are added to [http.Request].
+///
 class Call<T> {
   final Method method;
   final String url;
@@ -15,8 +16,13 @@ class Call<T> {
   final Map<String, String> headers;
   final Map<String, String> bodyFields;
 
-  const Call(this.method, {this.bodyFields,
-      this.pathParams, this.queryParams, this.headers, this.url, this.body});
+  const Call(this.method,
+      {this.bodyFields,
+      this.pathParams,
+      this.queryParams,
+      this.headers,
+      this.url,
+      this.body});
 
   http.Request getRequest(String baseUrl, TypeConverter converter) {
     final req = http.Request(method.methodString,
@@ -25,12 +31,12 @@ class Call<T> {
     if (body != null) {
       req.body = converter.toJson(body);
     }
-    if(bodyFields != null) {
+    if (bodyFields != null) {
       req.bodyFields = bodyFields;
     }
 
     // handle headers
-    if(headers != null) {
+    if (headers != null) {
       req.headers.addAll(headers);
     }
 
@@ -47,13 +53,15 @@ class Call<T> {
     return builder.build();
   }
 
+  /// If path in [method] is not set, baseUrl from [Boomerang] is ignored and
+  /// the string [url] is used.
   Uri _getBaseUrl(Method method, String url, baseUrl) {
-    if (method.url != null) {
-      return Uri.parse(baseUrl + method.url);
+    if (method.relUrl != null) {
+      return Uri.parse(baseUrl + method.relUrl);
     } else if (url != null) {
       return Uri.parse(url);
     } else {
-      throw StateError('Url should be either set in method or in its argument');
+      throw StateError('Url should be either set in method or in url');
     }
   }
 }
