@@ -26,8 +26,15 @@ main() {
     expect(req.url.toString(), equals('baseUrl/char?char=snow'));
   });
 
-  test('description', () {
+  test('converter is called when body is set', () {
     final subject = Call(Get('char'), body: TestBody());
     expect(subject.getRequest('baseUrl', TestConverter()).body, equals('Test Json'));
   });
+
+  test('form-url-encoded dic is set correctly in request', () {
+    final subject = Call(Get('char'), bodyFields: {'test': 'test field'});
+    expect(subject.body, isNull);
+    expect(subject.bodyFields, equals({'test': 'test field'}));
+  });
+
 }
