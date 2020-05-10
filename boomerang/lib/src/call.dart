@@ -11,15 +11,19 @@ class Call<T> {
   final Map<String, String> pathParams;
   final Map<String, String> queryParams;
   final Map<String, String> headers;
+  final Map<String, String> bodyFields;
 
-  const Call(this.method,
-      {this.pathParams, this.queryParams, this.headers, this.url, this.body});
+  const Call(this.method, {this.bodyFields,
+      this.pathParams, this.queryParams, this.headers, this.url, this.body});
 
   http.Request getRequest(String baseUrl, TypeConverter converter) {
     final req = http.Request(method.methodString,
         _getUrl(method, url, baseUrl, pathParams, queryParams));
     if (body != null) {
       req.body = converter.toJson(body);
+    }
+    if(bodyFields != null) {
+      req.bodyFields = bodyFields;
     }
     return req;
   }
