@@ -4,6 +4,8 @@ import 'package:uri/uri.dart';
 import 'method.dart';
 import 'package:http/http.dart' as http;
 
+/// A boomerang call. Holds parameters and constructs a [http.Request] accordingly.
+/// [headers] are added to [http.Request].
 class Call<T> {
   final Method method;
   final String url;
@@ -19,12 +21,19 @@ class Call<T> {
   http.Request getRequest(String baseUrl, TypeConverter converter) {
     final req = http.Request(method.methodString,
         _getUrl(method, url, baseUrl, pathParams, queryParams));
+    // handle body
     if (body != null) {
       req.body = converter.toJson(body);
     }
     if(bodyFields != null) {
       req.bodyFields = bodyFields;
     }
+
+    // handle headers
+    if(headers != null) {
+      req.headers.addAll(headers);
+    }
+
     return req;
   }
 

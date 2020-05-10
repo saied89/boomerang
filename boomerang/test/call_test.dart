@@ -33,4 +33,9 @@ main() {
     expect(subject.body, isNull);
     expect(subject.bodyFields, equals({'test': 'test field'}));
   });
+
+  test('headers are added correctly', () {
+    final subject = Call(Get('char'), headers: {'test': 'test field'});
+    expect(subject.headers, equals({'test': 'test field'}));
+  });
 }
