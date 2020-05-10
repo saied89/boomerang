@@ -2,9 +2,7 @@ import 'package:boomerang/boomerang.dart';
 import 'package:boomerang/src/method.dart';
 import 'package:test/test.dart';
 
-class TestBody {
-
-}
+class TestBody {}
 
 class TestConverter implements TypeConverter {
   @override
@@ -14,11 +12,9 @@ class TestConverter implements TypeConverter {
 
   @override
   String toJson<T>(T json) => 'Test Json';
-
 }
 
 main() {
-
   test('query params are handled', () {
     final subject = Call(Get('char'), queryParams: {'char': 'snow'});
     final req = subject.getRequest('baseUrl/', DefaultTypeConverter());
@@ -28,7 +24,8 @@ main() {
 
   test('converter is called when body is set', () {
     final subject = Call(Get('char'), body: TestBody());
-    expect(subject.getRequest('baseUrl', TestConverter()).body, equals('Test Json'));
+    expect(subject.getRequest('baseUrl', TestConverter()).body,
+        equals('Test Json'));
   });
 
   test('form-url-encoded dic is set correctly in request', () {
@@ -36,5 +33,4 @@ main() {
     expect(subject.body, isNull);
     expect(subject.bodyFields, equals({'test': 'test field'}));
   });
-
 }
