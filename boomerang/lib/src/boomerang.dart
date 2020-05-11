@@ -1,7 +1,7 @@
-import 'package:boomerang/boomerang.dart';
-import 'package:boomerang/src/call.dart';
-import 'package:boomerang/src/response.dart';
-import 'package:boomerang/src/type_converter.dart';
+import '../boomerang.dart';
+import 'call.dart';
+import 'response.dart';
+import 'type_converter.dart';
 import 'package:http/http.dart' as http;
 import 'package:meta/meta.dart';
 

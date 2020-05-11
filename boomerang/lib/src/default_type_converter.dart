@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:boomerang/src/type_converter.dart';
+import 'type_converter.dart';
 
 class DefaultTypeConverter extends TypeConverter<Map<String, dynamic>> {
 

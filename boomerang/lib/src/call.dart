@@ -1,4 +1,4 @@
-import 'package:boomerang/boomerang.dart';
+import '../boomerang.dart';
 import 'package:uri/uri.dart';
 
 import 'method.dart';
