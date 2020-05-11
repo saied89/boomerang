@@ -13,11 +13,16 @@ class Boomerang {
   final String baseUrl;
 
   Future<Response<T>> dispatch<T>(Call<T> call) async {
-    var streamedResponse = await client.send(call.getRequest(baseUrl, converter));
+    var streamedResponse =
+        await client.send(call.getRequest(baseUrl, converter));
     final res = await http.Response.fromStream(streamedResponse);
-    final body  = converter.fromJson<T>(res.body);
+    final body = converter.fromJson<T>(res.body);
     return Response(res, body);
   }
 
-  Boomerang({this.converter = defaultConverter, @required this.client, @required this.baseUrl}): assert(baseUrl.endsWith('/'), 'Base Url should end with /:'+ baseUrl);
+  Boomerang(
+      {this.converter = defaultConverter,
+      @required this.client,
+      @required this.baseUrl})
+      : assert(baseUrl.endsWith('/'), 'Base Url should end with /:' + baseUrl);
 }
