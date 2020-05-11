@@ -31,11 +31,20 @@ main() {
   test('form-url-encoded dic is set correctly in request', () {
     final subject = Call(Get('char'), bodyFields: {'test': 'test field'});
     expect(subject.body, isNull);
-    expect(subject.bodyFields, equals({'test': 'test field'}));
+    expect(subject.getRequest('baseUrl', TestConverter()).bodyFields, equals({'test': 'test field'}));
   });
 
   test('headers are added correctly', () {
     final subject = Call(Get('char'), headers: {'test': 'test field'});
-    expect(subject.headers, equals({'test': 'test field'}));
+    expect(subject.getRequest('baseUrl', TestConverter()).headers, equals({'test': 'test field'}));
+  });
+
+  test('path params are added Correctly', () {
+    final subject = Call(Get('char/{param}'), pathParams: {'param': 'value'});
+    expect(subject.getRequest('baseUrl/', TestConverter()).url.path, equals('baseUrl/char/value'));
+  });
+
+  test('path param without url placeholder throws', () {
+    expect(() => Call(Get('char/{param1}'), pathParams: {'param': 'value'}).getRequest('baseUrl', TestConverter()), throwsA(TypeMatcher<StateError>()));
   });
 }

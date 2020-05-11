@@ -45,8 +45,11 @@ class Call<T> {
 
   Uri _getUrl(Method method, String url, baseUrl,
       Map<String, String> pathParams, queryParams) {
-    final uri = _getBaseUrl(method, url, baseUrl);
-    final builder = UriBuilder.fromUri(uri);
+    var uri = _getBaseUrl(method, url, baseUrl);
+    if (pathParams != null) {
+      uri = _addPathParams(uri, pathParams);
+    }
+    final builder = UriBuilder.fromUri(Uri.parse(uri));
     if (queryParams != null) {
       builder.queryParameters = queryParams;
     }
@@ -55,13 +58,27 @@ class Call<T> {
 
   /// If path in [method] is not set, baseUrl from [Boomerang] is ignored and
   /// the string [url] is used.
-  Uri _getBaseUrl(Method method, String url, baseUrl) {
+  String _getBaseUrl(Method method, String url, baseUrl) {
     if (method.relUrl != null) {
-      return Uri.parse(baseUrl + method.relUrl);
+      return baseUrl + method.relUrl;
     } else if (url != null) {
-      return Uri.parse(url);
+      return url;
     } else {
       throw StateError('Url should be either set in method or in url');
     }
+  }
+
+  String _addPathParams(String rawPath, Map<String, String> pathParams) {
+    if (pathParams != null) {
+      pathParams.forEach((key, value) {
+        if (rawPath.contains('{$key}')) {
+          rawPath = rawPath.replaceFirst('{$key}', 'value');
+        } else {
+          throw StateError(
+              'Path param placeholder for key: $key, not found in Url: $rawPath');
+        }
+      });
+    }
+    return rawPath;
   }
 }
