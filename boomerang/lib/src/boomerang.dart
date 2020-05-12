@@ -16,8 +16,16 @@ class Boomerang {
     var streamedResponse =
         await client.send(call.getRequest(baseUrl, converter));
     final res = await http.Response.fromStream(streamedResponse);
-    final body = converter.fromJson<T>(res.body);
-    return Response(res, body);
+
+    return Response(res, _convertBody(res.body, converter));
+  }
+
+  T _convertBody<T>(String jsonStr, TypeConverter converter) {
+    if (jsonStr == null || jsonStr.isEmpty) {
+      return null;
+    } else {
+      return converter.fromJson<T>(jsonStr);
+    }
   }
 
   Boomerang(
