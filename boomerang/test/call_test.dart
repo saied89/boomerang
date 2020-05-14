@@ -53,4 +53,12 @@ main() {
             .getRequest('baseUrl', TestConverter()),
         throwsA(TypeMatcher<StateError>()));
   });
+
+  test('setting body and bodyFields together throws', () {
+    expect(
+        () => Call<Map<String, dynamic>>(Get(''),
+            bodyFields: {'t': 'v'},
+            body: {'t', 'v'}).getRequest('baseUrl', TestConverter()),
+        throwsA(TypeMatcher<StateError>()));
+  });
 }

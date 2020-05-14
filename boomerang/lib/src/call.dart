@@ -6,7 +6,6 @@ import 'package:http/http.dart' as http;
 
 /// A boomerang call. Holds parameters and constructs a [http.Request] accordingly.
 /// [headers] are added to [http.Request].
-///
 class Call<T> {
   final Method method;
   final String url;
@@ -72,10 +71,10 @@ class Call<T> {
     if (pathParams != null) {
       pathParams.forEach((key, value) {
         if (rawPath.contains('{$key}')) {
-          rawPath = rawPath.replaceFirst('{$key}', 'value');
+          rawPath = rawPath.replaceFirst('{$key}', value);
         } else {
           throw StateError(
-              'Path param placeholder for key: $key, not found in Url: $rawPath');
+              'Path param placeholder for key: $key, not found in Url: $rawPath.');
         }
       });
     }

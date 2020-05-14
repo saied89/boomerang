@@ -13,6 +13,6 @@ void main() {
     final serializers = Serializers([TestBody.serializer]);
     final subject = SerializableConverter(serializers);
     Object testBody = TestBody();
-    expect(subject.objectToJson(testBody), equals("""{"value":"test"}"""));
+    expect(subject.objectToJson(testBody), equals('''{"value":"test"}'''));
   });
 }
