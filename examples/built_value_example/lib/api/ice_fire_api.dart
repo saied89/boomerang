@@ -5,11 +5,10 @@ import 'package:built_value_example/serializer/serializers.dart';
 import 'package:http/http.dart' as http;
 
 final converter = BuiltValueConverter(serializers);
-final boomerang =
-    Boomerang(converter: converter, client: http.Client(), baseUrl: 'https://anapioficeandfire.com/api/');
+final boomerang = Boomerang(
+    converter: converter, client: http.Client(), baseUrl: 'https://anapioficeandfire.com/api/');
 
-Call<Character> getSnow =
-    Call(Get('characters/583'));
+Call<Character> getSnow = Call(Get('characters/583'));
 
 //Call<Character> getCharacterByNum(int num) => Call(Get(), url: 'https://anapioficeandfire.com/api/characters/583');
 
