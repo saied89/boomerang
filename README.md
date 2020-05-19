@@ -35,7 +35,7 @@ and make calls like
 final res = call.equeue();
 ```
 #### TypeConverters
-Type converters handle serialization and deserialization for _boomerang_. 3 Type converters are provided as part of project. 
+Type converters handle serialization and deserialization for _boomerang_. 3 Type converters are provided as part of the project. 
 
 ##### Default Type Converter
 A `DefaultTypeConverter` that uses _dart:convert_ and is part of the boomerang package itself. It simply converts request and response bodies to `Map<String, dynamic>`.
@@ -71,8 +71,40 @@ You can then use models that are set up with the serializers in your call defini
 ```dart
 Call<Character> getSnow = Call(Get('characters/583'));
 ```
-A full example can be found [here](https://github.com/saied89/boomerang/tree/master/examples/dart_convert_example).
+A full example can be found [here](https://github.com/saied89/boomerang/tree/master/examples/built_value_example).
  
 ##### Json Serializable Type Converter
-The [json_serializable](https://pub.dev/packages/json_serializable) package is a much simpler alternative offered by the dart team. 
+The [json_serializable](https://pub.dev/packages/json_serializable) package is a much simpler alternative offered by the dart team itself.
+
+For using this Converter you need to setup a `Serializer` for each model. Basicaly a static property in which methods
+provided by _json_serializable_ are passed to the `Serializer` constructor.
+ ```dart
+@JsonSerializable(nullable: false)
+class Character {
+  final String name;
+  final String gender;
+  final List<String> aliases;
+
+  Character({this.name, this.gender, this.aliases});
+
+  static Serializer<Character> get serializer =>
+      Serializer(_$CharacterFromJson, _$CharacterToJson);
+}
+```
+You also need to pass a list of every `Serializer` to a `Serializers` constructor.
+```dart
+final serializers = Serializers([Character.serializer]);
+```
+Both of these classes are part of the _serializable_converter_ package.
+
+Rest of the steps are exactly the same as built_value converter.
+```dart
+final converter = BuiltValueConverter(serializers);
+```
+You can then use models that are set up with the serializers in your call definitions.
+```dart
+Call<Character> getSnow = Call(Get('characters/583'));
+```
+A full example can be found [here](https://github.com/saied89/boomerang/tree/master/examples/json_serializable_example).
+
 #### Call API 
