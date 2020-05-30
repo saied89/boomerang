@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import '../boomerang.dart';
 import 'package:uri/uri.dart';
 
@@ -28,7 +30,7 @@ class Call<T> {
         _getUrl(method, url, baseUrl, pathParams, queryParams));
     // handle body
     if (body != null) {
-      req.body = converter.toJson(body);
+      req.body = jsonEncode(converter.toJson(body));
     }
     if (bodyFields != null) {
       req.bodyFields = bodyFields;

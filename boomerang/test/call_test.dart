@@ -6,12 +6,28 @@ class TestBody {}
 
 class TestConverter implements TypeConverter {
   @override
-  T fromJson<T>(String jsonStr) {
+  T fromJson<T>(Map<String, dynamic> jsonMap) {
+    // TODO: implement fromJson
     throw UnimplementedError();
   }
 
   @override
-  String toJson<T>(T json) => 'Test Json';
+  List<T> listFromJson<T>(List<Map<String, dynamic>> jsonList) {
+    // TODO: implement listFromJson
+    throw UnimplementedError();
+  }
+
+  @override
+  Map<String, dynamic> toJson<T>(T json) => {'test': 'saied'};
+//  @override
+//  T fromJson<T>(String jsonStr) {
+//    throw UnimplementedError();
+//  }
+//
+//  @override
+//  String toJson<T>(T json) => 'Test Json';
+
+
 }
 
 main() {
@@ -25,7 +41,7 @@ main() {
   test('converter is called when body is set', () {
     final subject = Call(Get('char'), body: TestBody());
     expect(subject.getRequest('baseUrl', TestConverter()).body,
-        equals('Test Json'));
+        equals('{"test":"saied"}'));
   });
 
   test('form-url-encoded dic is set correctly in request', () {

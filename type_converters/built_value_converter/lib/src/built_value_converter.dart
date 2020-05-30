@@ -18,11 +18,11 @@ class BuiltValueConverter implements TypeConverter {
   }
 
   @override
-  T fromJson<T>(String jsonStr) {
+  T fromJson<T>(Map<String, dynamic> jsonMap) {
     final serializerForType = serializers.serializerForType(T);
     assert(serializerForType != null);
 
     return serializers.deserializeWith(
-        serializerForType, jsonDecode(jsonStr));
+        serializerForType, jsonMap);
   }
 }

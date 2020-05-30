@@ -15,4 +15,8 @@ void main() {
     Object testBody = TestBody();
     expect(subject.objectToJson(testBody), equals('''{"value":"test"}'''));
   });
+
+  test('description', () {
+    
+  });
 }

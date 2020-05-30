@@ -11,23 +11,29 @@ class SerializableConverter implements TypeConverter {
   SerializableConverter(this.serializers);
 
   @override
-  T fromJson<T>(String jsonStr) {
+  T fromJson<T>(Map<String, dynamic> jsonMap) {
     final serializerForType = serializers.getSerializer<T>();
-    final Map<String, dynamic> jsonMap = jsonDecode(jsonStr);
     return serializerForType.fromJson(jsonMap);
   }
 
   @override
-  String toJson<T>(T body) {
+  Map<String, dynamic> toJson<T>(T body) {
     final serializerForType = serializers.getSerializer<T>();
     assert(serializerForType != null);
-    return jsonEncode(serializerForType.toJson(body));
+    return serializerForType.toJson(body);
   }
 
   String objectToJson(Object object) {
     final serializerForType = serializers.getSerializerWithType(object.runtimeType);
     assert(serializerForType != null);
     return jsonEncode(serializerForType.toJson(object));
+  }
+
+  @override
+  List<T> listFromJson<T>(List<Map<String, dynamic>> jsonList) {
+    final serializerForType = serializers.getSerializer<T>();
+    assert(serializerForType != null);
+    return List.from(jsonList.map((e) => serializerForType.fromJson(e)));
   }
 
 }

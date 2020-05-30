@@ -1,7 +1,9 @@
 ///Basic definition of all type converters
 abstract class TypeConverter {
   const TypeConverter();
-  T fromJson<T>(String jsonStr);
+  T fromJson<T>(Map<String, dynamic> jsonMap);
 
-  String toJson<T>(T body);
+  List<T> listFromJson<T>(List<Map<String, dynamic>> jsonList);
+
+  Map<String, dynamic> toJson<T>(T body);
 }

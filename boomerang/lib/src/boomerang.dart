@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import '../boomerang.dart';
 import 'call.dart';
 import 'response.dart';
@@ -22,15 +24,15 @@ class Boomerang {
     var streamedResponse =
         await client.send(call.getRequest(baseUrl, converter));
     final res = await http.Response.fromStream(streamedResponse);
-
-    return Response(res, _convertBody(res.body, converter));
+    final decodedRes = jsonDecode(res.body);
+    return Response(res, _convertBody(decodedRes, converter));
   }
 
-  T _convertBody<T>(String jsonStr, TypeConverter converter) {
-    if (jsonStr == null || jsonStr.isEmpty) {
+  T _convertBody<T>(dynamic decodedRes, TypeConverter converter) {
+    if (decodedRes == null) {
       return null;
     } else {
-      return converter.fromJson<T>(jsonStr);
+      return converter.fromJson<T>(decodedRes);
     }
   }
 }

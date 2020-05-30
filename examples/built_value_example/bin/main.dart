@@ -5,4 +5,8 @@ void main(List<String> arguments) async {
   var response = await getSnow.enqueue();
   final char = response.body;
   print(char.aliases);
+
+  var response1 = await getCharacters.enqueue();
+  final charList = response1.body;
+  print(charList.length);
 }
