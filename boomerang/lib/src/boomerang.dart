@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:boomerang/src/list_call.dart';
+
 import '../boomerang.dart';
 import 'call.dart';
 import 'response.dart';
@@ -25,14 +27,21 @@ class Boomerang {
         await client.send(call.getRequest(baseUrl, converter));
     final res = await http.Response.fromStream(streamedResponse);
     final decodedRes = jsonDecode(res.body);
-    return Response(res, _convertBody(decodedRes, converter));
+    return Response(res, _convertBody(call, decodedRes, converter));
   }
 
-  T _convertBody<T>(dynamic decodedRes, TypeConverter converter) {
+  T _convertBody<T>(Call<T> call, dynamic decodedRes, TypeConverter converter) {
     if (decodedRes == null) {
       return null;
     } else {
-      return converter.fromJson<T>(decodedRes);
+      if(call is ListCall) {
+        assert(decodedRes is Iterable);
+        final ls = call as ListCall;
+        return ls.makeRes(decodedRes, converter) as T;
+      }
+      else {
+        return converter.fromJson<T>(decodedRes);
+      }
     }
   }
 }

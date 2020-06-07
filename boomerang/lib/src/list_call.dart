@@ -20,5 +20,5 @@ class ListCall<T> extends Call<List<T>> {
 
   /// Method to convert a list of dynamic to a correctly typed list. This method is necessary since
   /// currently dart type doesn't hold generic type's data.
-  List<T> makeRes(List t) => List.from(t);
+  List<T> makeRes(Iterable t, TypeConverter converter) => t.map((e) => converter.fromJson<T>(e)).toList();
 }
