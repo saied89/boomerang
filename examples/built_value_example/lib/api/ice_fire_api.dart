@@ -4,4 +4,4 @@ import 'package:built_value_example/models/Character.dart';
 
 Call<Character> getSnow = Call(Get('characters/583'));
 
-Call<BuiltList<Character>> getCharacters = Call(Get('characters'));
+ListCall<Character> getCharacters = ListCall(Get('characters'));

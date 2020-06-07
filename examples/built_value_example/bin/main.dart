@@ -9,4 +9,5 @@ void main(List<String> arguments) async {
   var response1 = await getCharacters.enqueue();
   final charList = response1.body;
   print(charList.length);
+  print(charList[0].culture);
 }

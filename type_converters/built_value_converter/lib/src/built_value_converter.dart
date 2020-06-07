@@ -11,10 +11,10 @@ class BuiltValueConverter implements TypeConverter {
   BuiltValueConverter(this.serializers);
 
   @override
-  String toJson<T>(T body) {
+  Map<String, dynamic> toJson<T>(T body) {
     final serializerForType = serializers.serializerForType(T);
     assert(serializerForType != null);
-    return jsonEncode(serializers.serializeWith(serializerForType, body));
+    return serializers.serializeWith(serializerForType, body);
   }
 
   @override
