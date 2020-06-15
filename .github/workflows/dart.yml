@@ -27,5 +27,7 @@ jobs:
       run: java -jar reqres-0.0.1-all.jar
     - name: Install dependencies
       run: pub get
+      working-directory: ${{env.working-directory}}
     - name: Run tests
       run: pub run test
+      working-directory: ${{env.working-directory}}
