@@ -19,8 +19,10 @@ jobs:
     - uses: actions/setup-java@v1
       with:
         java-version: '9.0.4' # The JDK version to make available on the path.
-    - name: Dowload ReRes
-      run: wget https://github.com/saied89/reqres/releases/download/0.0.2/reqres-0.0.1-all.jar
+    - name: Github Action for wget
+      uses: wei/wget@v1.1.1
+      with:
+        args: https://github.com/saied89/reqres/releases/download/0.0.2/reqres-0.0.1-all.jar
     - name: Run ReqRes
       run: java -jar reqres-0.0.1-all.jar
     - name: Install dependencies
