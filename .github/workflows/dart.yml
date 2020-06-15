@@ -24,7 +24,7 @@ jobs:
       with:
         args: https://github.com/saied89/reqres/releases/download/0.0.2/reqres-0.0.1-all.jar
     - name: Run ReqRes
-      run: java -jar reqres-0.0.1-all.jar
+      run: java -jar reqres-0.0.1-all.jar &
     - name: Install dependencies
       run: pub get
       working-directory: ${{env.working-directory}}
