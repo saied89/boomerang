@@ -1,3 +1,4 @@
+![Dart CI](https://github.com/saied89/boomerang/workflows/Dart%20CI/badge.svg?branch=master)
 #### Description
 A tool for building simple, consistent and clean network layers. In dart you have to either use librarires that use codegen or write it up from scratch.
 
