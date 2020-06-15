@@ -1,6 +1,10 @@
-import 'package:boomerang/boomerang.dart';
+import 'dart:convert';
 
-class ListCall<T> extends Call<List<T>> {
+import 'package:boomerang/boomerang.dart';
+import 'package:boomerang/src/base_call.dart';
+import 'package:http/http.dart' as http;
+
+class ListCall<T> extends BaseCall<List<T>> {
   ListCall(Method method,
       {Map<String, String> bodyFields,
       Map<String, String> pathParams,
@@ -20,5 +24,13 @@ class ListCall<T> extends Call<List<T>> {
 
   /// Method to convert a list of dynamic to a correctly typed list. This method is necessary since
   /// currently dart type doesn't hold generic type's data.
-  List<T> makeRes(Iterable t, TypeConverter converter) => t.map((e) => converter.fromJson<T>(e)).toList();
+  @override
+  List<T> makeRes(http.Response response, TypeConverter converter) {
+    final decodedRes = jsonDecode(response.body);
+    assert(decodedRes is Iterable);
+    final t = decodedRes.map((e) {
+      return converter.fromJson<T>(e);
+    });
+    return List.from(t);
+  }
 }

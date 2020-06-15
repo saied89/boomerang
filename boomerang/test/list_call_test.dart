@@ -1,8 +1,7 @@
-import 'dart:convert';
-
 import 'package:boomerang/boomerang.dart';
 import 'package:boomerang/src/list_call.dart';
 import 'package:test/test.dart';
+import 'package:http/http.dart' as http;
 
 class MockConverter extends TypeConverter {
   @override
@@ -42,10 +41,8 @@ main() {
   ]
   """;
 
-  final jMap = jsonDecode(json);
-  assert(jMap is Iterable);
-  expect((jMap as Iterable).length, equals(2));
-  final t = ls.makeRes(jMap, MockConverter());
+  final res = http.Response(json, 200);
+  final t = ls.makeRes(res, MockConverter());
   expect(t.length, equals(2));
   expect(t[0].field1, equals("data1"));
  });
