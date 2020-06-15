@@ -20,8 +20,6 @@ class ListCall<T> extends BaseCall<List<T>> {
             url: url,
             body: body);
 
-  Type get itemType => T;
-
   /// Method to convert a list of dynamic to a correctly typed list. This method is necessary since
   /// currently dart type doesn't hold generic type's data.
   @override
