@@ -6,6 +6,7 @@ library boomerang;
 export 'src/boomerang.dart';
 export 'src/type_converter.dart';
 export 'src/call.dart';
+export 'src/base_call.dart';
 export 'src/list_call.dart';
 export 'src/response.dart';
 export 'src/default_type_converter.dart';

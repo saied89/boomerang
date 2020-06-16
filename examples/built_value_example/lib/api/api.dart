@@ -9,6 +9,6 @@ final boomerang = Boomerang(
     converter: converter, client: http.Client(), baseUrl: 'https://anapioficeandfire.com/api/');
 
 // Add custom error handling here
-extension Equeue<T> on Call<T> {
+extension Equeue<T> on BaseCall<T> {
   Future<Response<T>> enqueue() => boomerang.dispatch(this);
 } // sample usage: var response = await getSnow.enqueue();

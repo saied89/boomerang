@@ -1,8 +1,8 @@
 [![pub](https://img.shields.io/pub/v/boomerang)](https://pub.dev/packages/boomerang)
 ![Dart CI](https://github.com/saied89/boomerang/workflows/Dart%20CI/badge.svg?branch=master)
 #### Description
-A tool for building simple, consistent and clean network layers. In dart you have to either use librarires that use codegen or write it up from scratch.
-
+A library for building simple, consistent and clean network layers. In dart you have to either use tools that rely on tools that use codegen or write it all from the scratch yourself.
+This is a simple, lean and extendible library with integrations for both `Json_Serializable` and `built_value` that helps you have clean and maintainable network layers.
 
 #### Usage
 First configure a [_TypeConverter_](#TypeConverters) for handling serialization and deserialization.
