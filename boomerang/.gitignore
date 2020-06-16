@@ -12,4 +12,4 @@ doc/api/
 
 .idea
 /test/.test_coverage.dart
-/coverage/lcov.info
+/coverage
