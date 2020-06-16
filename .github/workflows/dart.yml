@@ -1,0 +1,33 @@
+name: Dart CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image:  google/dart:latest
+    env:
+      working-directory: ./boomerang/
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-java@v1
+      with:
+        java-version: '9.0.4' # The JDK version to make available on the path.
+    - name: Github Action for wget
+      uses: wei/wget@v1.1.1
+      with:
+        args: https://github.com/saied89/reqres/releases/download/0.0.2/reqres-0.0.1-all.jar
+    - name: Run ReqRes
+      run: java -jar reqres-0.0.1-all.jar &
+    - name: Install dependencies
+      run: pub get
+      working-directory: ${{env.working-directory}}
+    - name: Run tests
+      run: pub run test
+      working-directory: ${{env.working-directory}}
