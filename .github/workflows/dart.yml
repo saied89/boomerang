@@ -28,6 +28,8 @@ jobs:
     - name: Install dependencies
       run: pub get
       working-directory: ${{env.working-directory}}
-    - name: Run tests
-      run: pub run test
+    - name: Run tests and make report
+      run: pub run test_coverage
       working-directory: ${{env.working-directory}}
+    - name: Codecov
+      uses: codecov/codecov-action@v1.0.7
