@@ -11,9 +11,6 @@ class DefaultTypeConverter extends TypeConverter {
   @override
   T fromJson<T>(Map<String, dynamic > jsonMap) => jsonMap as T;
 
-  @override
-  List<T> listFromJson<T>(List<Map<String, dynamic >> jsonList) => jsonList as List<T>;
-
   //TODO add a nice error message in case type conversion fails
   @override
   Map<String, dynamic> toJson<T>(T body) => body as Map<String, dynamic>;
