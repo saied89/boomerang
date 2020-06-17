@@ -112,3 +112,20 @@ Call<Character> getSnow = Call(Get('characters/583'));
 A full example can be found [here](https://github.com/saied89/boomerang/tree/master/examples/json_serializable_example).
 
 #### Call API 
+
+Call object constructor has a mandatory argument and a number of named optional ones that enable you to fully customize request parameters.
+
+| arg name        | description     |type |mandatory |
+| ------------- |:-------------:|:-----:|:-------|
+| method      | http method, relative path |Method<sup>1</sup>| &check;
+| url<sup>2</sup>      | absolute path | String     |
+| body | body of request      | Object<sup>3</sup> |
+|pathParams| path params| Map<String, String> 
+|queryParams| query params| Map<String, String> 
+|headers| headers| Map<String, String> 
+|bodyFields| url encoded form data<sup>4</sup>| Map<String, String> 
+
+1. A sealed class of http verbs that also can hold relative path(similar to retrofit). Relative path should not have starting slash.
+2. Absolute path that would override baseUrl. `Call(Get(), url: 'www.absolutePath.com') // request path will be www.absolutePath.com regardless of set baseUrl`
+3. Will be serialized based on [runtimeType](https://api.dart.dev/stable/2.8.4/dart-core/Object/runtimeType.html). Please enforce type in function definition.
+4. Cannot be set simultaneously with `body`.
