@@ -1,6 +1,6 @@
 name: boomerang
 description: A starting point for Dart libraries or applications.
-version: 0.0.12
+version: 0.1.13
 homepage: https://github.com/saied89/boomerang
 
 environment:
