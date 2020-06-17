@@ -56,7 +56,7 @@ final res = call.enqueue();  // res is of type Future<Response<Map<String, dynam
 ```
 A full example can be found [here](https://github.com/saied89/boomerang/tree/master/examples/dart_convert_example).
 
-##### Built value Type Converter ![Pub Version](https://img.shields.io/pub/v/built_value_converter)
+##### Built value Type Converter [![pub](https://img.shields.io/pub/v/built_value_converter)](https://pub.dev/packages/built_value_converter)
 `BuiltValueConverter` takes a [built_value](https://pub.dev/packages/built_value) `Serializers` as an argument and uses it for serialization and deserialization.
 Please see this [article](https://medium.com/dartlang/darts-built-value-for-serialization-f5db9d0f4159#.h12y94wu7) for more info on setting that up.
 Don't forget to add `StandardJsonPlugin` plugin to your `serializers`.
@@ -77,7 +77,7 @@ Call<Character> getSnow = Call(Get('characters/583'));
 ```
 A full example can be found [here](https://github.com/saied89/boomerang/tree/master/examples/built_value_example).
  
-##### Json Serializable Type Converter ![Pub Version](https://img.shields.io/pub/v/serializable_converter)
+##### Json Serializable Type Converter[![pub](https://img.shields.io/pub/v/seializable_converter)](https://pub.dev/packages/seializable_converter)
 The [json_serializable](https://pub.dev/packages/json_serializable) package is a much simpler alternative offered by the dart team itself.
 
 For using this Converter you need to setup a `Serializer` for each model. Basicaly a static property in which methods
