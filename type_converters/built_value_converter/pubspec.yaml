@@ -1,7 +1,7 @@
 name: built_value_converter
 description: A starting point for Dart libraries or applications.
-# version: 1.0.0
-# homepage: https://www.example.com
+version: 0.1.13
+homepage: https://github.com/saied89/boomerang
 
 environment:
   sdk: '>=2.7.0 <3.0.0'
@@ -9,8 +9,7 @@ environment:
 dependencies:
   built_collection: '>=2.0.0 <5.0.0'
   built_value: ^7.0.2
-  boomerang:
-    path: '../../boomerang'
+  boomerang: ^0.1.13
 
 dev_dependencies:
   pedantic: ^1.8.0
