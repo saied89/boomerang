@@ -77,7 +77,7 @@ Call<Character> getSnow = Call(Get('characters/583'));
 ```
 A full example can be found [here](https://github.com/saied89/boomerang/tree/master/examples/built_value_example).
  
-##### Json Serializable Type Converter
+##### Json Serializable Type Converter ![Pub Version](https://img.shields.io/pub/v/serializable_converter)
 The [json_serializable](https://pub.dev/packages/json_serializable) package is a much simpler alternative offered by the dart team itself.
 
 For using this Converter you need to setup a `Serializer` for each model. Basicaly a static property in which methods
