@@ -27,7 +27,6 @@ class TestConverter implements TypeConverter {
 //  @override
 //  String toJson<T>(T json) => 'Test Json';
 
-
 }
 
 main() {
@@ -40,27 +39,24 @@ main() {
 
   test('converter is called when body is set', () {
     final subject = Call(Get('char'), body: TestBody());
-    expect(subject.getRequest('baseUrl', TestConverter()).body,
-        equals('{"test":"saied"}'));
+    expect(subject.getRequest('baseUrl', TestConverter()).body, equals('{"test":"saied"}'));
   });
 
   test('form-url-encoded dic is set correctly in request', () {
     final subject = Call(Get('char'), bodyFields: {'test': 'test field'});
     expect(subject.body, isNull);
-    expect(subject.getRequest('baseUrl', TestConverter()).bodyFields,
-        equals({'test': 'test field'}));
+    expect(
+        subject.getRequest('baseUrl', TestConverter()).bodyFields, equals({'test': 'test field'}));
   });
 
   test('headers are added correctly', () {
     final subject = Call(Get('char'), headers: {'test': 'test field'});
-    expect(subject.getRequest('baseUrl', TestConverter()).headers,
-        equals({'test': 'test field'}));
+    expect(subject.getRequest('baseUrl', TestConverter()).headers, equals({'test': 'test field'}));
   });
 
   test('path params are added Correctly', () {
     final subject = Call(Get('char/{param}'), pathParams: {'param': 'value'});
-    expect(subject.getRequest('baseUrl/', TestConverter()).url.path,
-        equals('baseUrl/char/value'));
+    expect(subject.getRequest('baseUrl/', TestConverter()).url.path, equals('baseUrl/char/value'));
   });
 
   test('path param without url placeholder throws', () {
@@ -72,9 +68,8 @@ main() {
 
   test('setting body and bodyFields together throws', () {
     expect(
-        () => Call<Map<String, dynamic>>(Get(''),
-            bodyFields: {'t': 'v'},
-            body: {'t', 'v'}).getRequest('baseUrl', TestConverter()),
+        () => Call<Map<String, dynamic>>(Get(''), bodyFields: {'t': 'v'}, body: {'t', 'v'})
+            .getRequest('baseUrl', TestConverter()),
         throwsA(TypeMatcher<StateError>()));
   });
 

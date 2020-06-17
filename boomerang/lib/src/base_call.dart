@@ -1,8 +1,10 @@
 import 'dart:convert';
-import '../boomerang.dart';
-import 'package:uri/uri.dart';
-import 'method.dart';
+
 import 'package:http/http.dart' as http;
+import 'package:uri/uri.dart';
+
+import '../boomerang.dart';
+import 'method.dart';
 
 /// A boomerang call. Holds parameters and constructs a [http.Request] accordingly.
 /// [headers] are added to [http.Request].
@@ -15,14 +17,14 @@ abstract class BaseCall<T> {
   final Map<String, String> headers;
   final Map<String, String> bodyFields;
 
-  BaseCall(this.method, {this.url, this.body, this.pathParams, this.queryParams, this.headers,
-      this.bodyFields});
+  BaseCall(this.method,
+      {this.url, this.body, this.pathParams, this.queryParams, this.headers, this.bodyFields});
 
   T makeRes(http.Response response, TypeConverter typeConverter);
 
   http.Request getRequest(String baseUrl, TypeConverter converter) {
     final req =
-    http.Request(method.methodString, _getUrl(method, url, baseUrl, pathParams, queryParams));
+        http.Request(method.methodString, _getUrl(method, url, baseUrl, pathParams, queryParams));
     // handle body
     if (body != null) {
       req.body = jsonEncode(converter.toJson(body));
@@ -76,4 +78,3 @@ abstract class BaseCall<T> {
     return rawPath;
   }
 }
-

@@ -35,5 +35,4 @@ class SerializableConverter implements TypeConverter {
     assert(serializerForType != null);
     return List.from(jsonList.map((e) => serializerForType.fromJson(e)));
   }
-
 }

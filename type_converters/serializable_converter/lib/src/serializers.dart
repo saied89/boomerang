@@ -1,7 +1,6 @@
 import 'package:serializable_converter/src/serializer.dart';
 
 class Serializers {
-
   final Map<Type, Serializer> _map = {};
 
   Serializers(List<Serializer> serializerList) {

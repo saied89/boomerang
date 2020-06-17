@@ -25,7 +25,5 @@ class Call<T> extends BaseCall<T> {
 
   @override
   T makeRes(http.Response response, TypeConverter converter) =>
-      converter.fromJson(
-          jsonDecode(response.body)
-      );
+      converter.fromJson(jsonDecode(response.body));
 }

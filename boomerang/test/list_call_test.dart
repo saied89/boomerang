@@ -1,7 +1,7 @@
 import 'package:boomerang/boomerang.dart';
 import 'package:boomerang/src/list_call.dart';
-import 'package:test/test.dart';
 import 'package:http/http.dart' as http;
+import 'package:test/test.dart';
 
 class MockConverter extends TypeConverter {
   @override
@@ -15,20 +15,19 @@ class MockConverter extends TypeConverter {
     // TODO: implement toJson
     throw UnimplementedError();
   }
-
 }
 
 class MockData {
- final String field1;
- final String field2;
+  final String field1;
+  final String field2;
 
   MockData(this.field1, this.field2);
 }
 
 main() {
- test('l', () {
-  final ls = ListCall<MockData>(Get(''));
-  String json = """
+  test('l', () {
+    final ls = ListCall<MockData>(Get(''));
+    String json = """
   [
   {
   "field1": "data1",
@@ -41,9 +40,9 @@ main() {
   ]
   """;
 
-  final res = http.Response(json, 200);
-  final t = ls.makeRes(res, MockConverter());
-  expect(t.length, equals(2));
-  expect(t[0].field1, equals("data1"));
- });
+    final res = http.Response(json, 200);
+    final t = ls.makeRes(res, MockConverter());
+    expect(t.length, equals(2));
+    expect(t[0].field1, equals("data1"));
+  });
 }

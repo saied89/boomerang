@@ -11,9 +11,7 @@ class Character {
 
   Character({this.name, this.gender, this.aliases});
 
-  factory Character.fromJson(Map<String, dynamic> json) =>
-      _$CharacterFromJson(json);
+  factory Character.fromJson(Map<String, dynamic> json) => _$CharacterFromJson(json);
 
-  static Serializer<Character> get serializer =>
-      Serializer(_$CharacterFromJson, _$CharacterToJson);
+  static Serializer<Character> get serializer => Serializer(_$CharacterFromJson, _$CharacterToJson);
 }

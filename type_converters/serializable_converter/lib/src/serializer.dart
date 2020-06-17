@@ -10,5 +10,6 @@ class Serializer<T> {
   Type get serializationType => T;
 
   T fromJson(Map<String, dynamic> map) => _fromJsonConverter(map);
+
   Map<String, dynamic> toJson(T input) => _toJsonConverter(input);
 }

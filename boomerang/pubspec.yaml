@@ -1,7 +1,7 @@
 name: boomerang
 description: A starting point for Dart libraries or applications.
-# version: 1.0.0
-# homepage: https://www.example.com
+version: 0.0.12
+homepage: https://github.com/saied89/boomerang
 
 environment:
   sdk: '>=2.7.0 <3.0.0'
@@ -9,6 +9,7 @@ environment:
 dependencies:
   meta: ^1.1.8
   uri: ^0.11.3+1
+  http: ^0.12.1
 
 dev_dependencies:
   pedantic: ^1.8.0

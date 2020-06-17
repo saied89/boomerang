@@ -1,6 +1,4 @@
-
 class Serializable<T extends Serializable<T>> {
-
   static Map<Type, Function> map = <Type, Function>{};
 
   static T Function(Map<String, dynamic>) getSer<T>() {
@@ -15,7 +13,5 @@ class Serializable<T extends Serializable<T>> {
     final t = <int>[5, 6, 7];
   }
 
-  static t() {
-
-  }
+  static t() {}
 }

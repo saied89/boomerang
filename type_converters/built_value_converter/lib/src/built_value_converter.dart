@@ -1,7 +1,5 @@
 // TODO: Put public facing types in this file.
 
-import 'dart:convert';
-
 import 'package:boomerang/boomerang.dart';
 import 'package:built_value/serializer.dart';
 
@@ -22,7 +20,6 @@ class BuiltValueConverter implements TypeConverter {
     final serializerForType = serializers.serializerForType(T);
     assert(serializerForType != null);
 
-    return serializers.deserializeWith(
-        serializerForType, jsonMap);
+    return serializers.deserializeWith(serializerForType, jsonMap);
   }
 }
