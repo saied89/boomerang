@@ -79,7 +79,7 @@ main() {
   });
 
   test('absolute url ignores base url', () {
-    final t = Call(Get(), url: 'www.absoluteath.com');
+    final t = Call(Get(), url: 'www.absolutePath.com');
     final req = t.getRequest('baseUrl', TestConverter());
     expect(req.url.toString(), equals('www.absolutePath.com'));
   });
