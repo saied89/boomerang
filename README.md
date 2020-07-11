@@ -4,7 +4,7 @@
 
 #### Description
 A library for building simple and clean network layers. In dart you have to either use tools that rely on tools that use codegen or write it all from the scratch yourself.
-This is a simple, lean and extendible library with integrations for both `Json_Serializable` and `built_value` that helps you have clean and maintainable network layers.
+This is a simple, lean and extendible library with integrations for both `Json_Serializable` and `built_value` as well as the new `dart_json_mapper` that helps you have clean and maintainable network layers.
 
 ## Features
 * Simple and elegant API with no use of codegen
