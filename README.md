@@ -2,7 +2,7 @@
 ![Dart CI](https://github.com/saied89/boomerang/workflows/Dart%20CI/badge.svg?branch=master)
 [![codecov](https://codecov.io/gh/saied89/boomerang/branch/master/graph/badge.svg)](https://codecov.io/gh/saied89/boomerang)
 
-#### Descriptio
+#### Description
 A library for building simple and clean network layers. In dart you have to either use tools that rely on tools that use codegen or write it all from the scratch yourself.
 This is a simple, lean and extendible library with integrations for both `Json_Serializable` and `built_value` that helps you have clean and maintainable network layers.
 
